@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="bmi" class="com.di.spring_di_xml_value_setter.BMI"/>
+	
+	<bean id="member" class="com.di.spring_di_xml_value_setter.Member" scope="singleton">
+		<!-- 생성자 기반 의존성 주입 -->
+		<property name="bmi" ref="bmi"/>
+		
+	<property name="name" value="성춘향" />
+	<property name="age" value="20" />
+	<property name="height" value="165" />
+	<property name="weight" value="50" />
+	<property name="courses">
+		<list>
+		<value>수영</value>
+		<value>헬스</value>
+		<value>에어로빅</value>
+		</list>
+	</property>
+	</bean>
+</beans>

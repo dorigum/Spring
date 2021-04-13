@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="book" class="com.di.spring_xml_value_setter.Book">
+	<!-- Setter를 사용하여 값 설정 : name(Setter 메소드 이름) -->
+	<property name="bookNo" value="1000" />
+	<property name="bookName" value="Spring" />
+	<property name="bookAuthor" value="홍길동" />
+	<property name="bookPrice" value="25000" />
+	
+	</bean>
+</beans>
