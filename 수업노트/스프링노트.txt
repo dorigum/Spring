@@ -539,6 +539,393 @@ New / Maven 프로젝트 생성
 -- @Service 컴포넌트 : 서비스 클래스에 사용
 -- @Repository 컴포넌트 : DAO 클래스 또는 Repository 클래스에 사용
 
+패키지 : com.spring_di_annotation_component2
+
+
+--------------------------------------------------------------------------
+설정 담당 자바 클래스에서 사용하는 어노테이션
+@Configuration
+- 빈 설정 클래스임을 나타내는 어노테이션
+
+@Bean 
+- 빈을 생성해서 반환해주는 어노테이션
+- 빈을 생성하는 메소드 앞에 기술
+- @Bean이 붙은 메소드는 반드시 Bean 반환
+
+@Bean 어노테이션을 사용하는 경우
+- 일반적으로 @Controller, @Service, @Repository 어노테이션을 붙이지 않는 클래스의 빈 생성에 사용
+
+패키지명 : com.spring_di_annotation.configuration_bean
+사용 클래스
+- BMI
+- Member
+- MemberMain
+- ApplicationConfig.java
+
+
+=========================================================
+Spring MVC 구조
+
+- Spring MVC Project 생성
+- 설정
+- 구조 확인
+- 데이터 전송
+- 폼을 통한 데이터 전송
+
+New / Spring MVC Project
+프로젝트 이름 : spring_mvc_01
+패키지 이름 : com.spring_mvc.project
+
+(1) pom.xml 버전 변경
+기본 환경 확인
+- Spring Framework 3.1.1
+- Java version 1.6
+- Maven compiler
+-- source 1.6
+-- target 1.6
+
+변경할 버전
+-Spring Framework 4.3.4
+- Java version 1.8
+- Maven compiler
+-- source 1.8
+-- target 1.8
+
+(2) 프로젝트 설정 변경 (프로젝트 이름 우클릭)
+- Java Compiler : 1.8
+- Java Build Path : JRE 수정
+- Project Facets : Java 버전 변경 (1.8)
+
+(3) Maven / Update Project
+
+
+----------------------------------------------------------
+프로젝트 이름 : spring_mvc_01
+패키지 이름 : com.spring_mvc.project
+http://localhost:8080/project/
+
+
+프로젝트 처음 생성 시
+- 기본 컨트롤러 포함되어 있음 : HomeController
+-- src / main
+-- C:\springWorkspace\spring_mvc_01\src\main\java\com\spring_mvc\project
+- 기본 view 페이지 : home.jsp
+-- 아래 : src / main/ webapp/WEB_INF/views/ 여기에 home.jsp 들어 있음
+
+HomeController
+- @RequestMapping(value = "/", method = RequestMethod.GET)
+- 요청 url 맵핑 : "/" : /project를 의미 : 요청을 받고
+--처리 작업
+- 결과를 View 페이지에 전송
+-- return "home";  // view 페이지 이름 : home.jsp
+
+/WEB-INF/views/ + view 페이지 이름 + .jsp
+
+설정 파일 확인
+1. web.xml  : /  :요청 url 맵핑 : "/" : /project를 의미 : 요청을 받고
+(1) 요청 url 
+- <servlet-mapping>
+	<servlet-name>appServlet</servlet-name>
+	<url-pattern>/</url-pattern>
+</servlet-mapping>
+
+(2) DispatcherServlet : 컨트롤러를 찾아서 작업 처리
+(3) 스프링 컨테이너 설정 파일 위치 지정
+/WEB-INF/spring/appServlet/servlet-context.xml
+
+2.  servlet-context.xml 파일 확인
+- 응답 페이지 설정되어 있음
+- ViewResolver가  jsp 위치 찾고, 해당 jsp 파일 찾도록 설정
+-(1) "/WEB-INF/views/ : view 페이지의 위치
+-(2) name="suffix" value=".jsp" : 뷰페이지 이름 확장자 (.jsp 파일)
+-- view 페이지 위치 +   여기에 뷰 페이지 이름     + .jsp : 뷰 페이지로 설정
+
+컨트롤러에서 뷰 페이지 이름 반환 : home
+
+스프링의 디렉터리 구조
+- src/main/java : 자바코드 위치(Controller, Service, model)
+- src/main/resources : 자바 코드에서 참조하는 리소스 파일들 (DB 설정파일)
+
+- src/main/webapp : 웹 서비스 루트 디렉터리 (외부에서 접근 가능)
+- src/main/webapp/resources : js, css, image 등 리소스 파일
+
+- src/main/webapp/WEB-INF/spring : 스프링 환경 설정 파일 
+	-- servlet-context.xml : 서블릿과 관련된 리소스에 대한 설정
+	-- root-contxt.xml : 서블릿과 관련 없는 모든 리소스에 대한 설정
+
+- src/main/webapp/WEB-INF/views : html, jsp 페이지 (컨트롤러를 경유해서 접근 가능) (외부에서는 직접 접근 불가(보안상)
+
+server.xml에서 context path 확인 : 패캐지 이름에서 맨 마지막 . 다음에 오는 이름이 컨텍스트 패스가 됨
+<Context docBase="spring_mvc_01" path="/project"
+
+패키지 이름 : com.spring_mvc.project
+http://localhost:8080/mvc/
+http://localhost:8080/mvc/project
+
+http://localhost:8080/mvc/WEB-INF/classes/com/spring_mvc_01/project/HomeController.java
+http://localhost:8080/project/WEB-INF/classes/com/spring_mvc/project/HomeController.java
+
+
+------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------
+스프링 컨트롤러
+- 스프링 컨트롤러는 빈으로 등록되어야 하며
+- 비즈니스 로직이 실행되기 전에 비즈니스 객체를 의존성 주입(DI) 해야 함
+- @Controller 어노테이션 사용
+- @RequestMapping 어노테이션을 사용해서 url 맵핑 : 사용자의 요청 받음
+
+
+- 컨트롤러 클래스 새로 작성
+- 클래스 생성하고  @Controller 어노테이션 붙임
+- @RequestMapping 어노테이션을 사용해서 요청 경로 지정
+- 요청 처리 메소드 구현
+- 뷰 페이지 이름 반환 : return "jsp 페이지 이름"
+
+
+---------------------------------------------------------------
+연습문제
+- 새 컨트롤러 생성 : SecondController
+- url 맵핑 : /secondView
+- jsp 페이지 : views/second 폴더 만들어서 그 안에 secondView.jsp 생성
+- SecondController에게 요청해서 secondView.jsp 출력
+
+-------------------------------------------------------------------------------
+컨트롤러에서 View 페이지로 데이터 전달 방법
+(1) Model 인터페이스 객체 사용
+(2) ModelAndView 클래스 객체 사용
+
+(1) Model 인터페이스
+- Model에 Attributes 추가하는데 사용
+- ("key", value) 형태로 값을 임시 저장
+- Controller에서 Model에 데이터 저장하고
+- View 이름 return 하면
+- View 페이지로 Model 전달되고
+- View 페이지에서 key를 사용해서 Model에 저장된 Data 사용 : ${key }
+
+나이 : 30
+주소 : 서울시 강남구
+전화 : 010-1234-1234
+
+
+(2) ModelAndView 클래스 객체 사용
+- 데이터와 뷰 둘 다 설정
+-- 데이터 설정 : addObject(key, value)
+-- 뷰 이름 설정 : setViewName("jsp파일 이름")
+- 반환값으로 ModelAndView 객체 반환
+- ModelAndView mv = new ModelAndView();
+- mv.addObject("name", "홍길동")
+- mv.setViewName("showInfo");   // showInfo.jsp
+- return mv;
+
+
+연습문제
+- 컨트롤러 : BookController
+- Views 폴더 안에 book 폴더 생성 : bookInfoView.jsp
+
+- 데이터 
+-- 제목 : 스프링 프레임워크
+-- 가격 : 20000
+-- 저자 : 홍길동
+
+- 메소드 
+- showBookInfo1() : Model 사용
+- showBookInfo2() : ModelAndView 사용
+
+- 요청 url 
+- bookInfoView1
+- bookInfoView2
+
+--------------------------------------------------------------------
+@RequestMapping 다중 맵핑
+- 한 개의 메소드를 사용해서 여러 요청 경로로 접근 처리 가능
+- @RequestMapping(value={"요청경로1", "요청경로2"})
+
+
+--------------------------------------------------------------------
+Form 데이터 처리
+- 폼에 입력된 값을 컨트롤러로 전송
+- 스프링에서 HTTP 요청 파라미터 가져오는 방법 3가지
+(1) getParameter() 메소드 사용
+(2) @RequestParam 어노테이션 사용
+(3) Command 객체 이용
+- Student 클래스 생성하고 요청을 수행하는 메소드에서 Student 객체 사용 (커맨드 객체)
+- Command 객체는 자동으로 View Model에 등록
+- View 페이지에서 ${객체.필드명}
+
+index.jsp 만들고 
+실행하면 바로 index.jsp 실행되게 설정
+
+요청 : / 이면
+view 이름 : index
+
+
+@ModelAttribute 어노테이션
+- Comman 객체 이름 변경 가능
+- Student student 인 경우 : ${stuedent.no}
+
+- @ModelAttribute("studentInfo") Student student
+- ${studentInfo.no}
+
+
+------------------------------------------------------------------------------
+연습문제
+
+새 프로젝트 : spring_mvc_02
+패키지 : com.spring_mvc.product
+(http://localhost:8080/product/)
+
+상품 정보를 등록하는 프로그램 작성
+- 상품 정보 등록 폼에서 입력한 데이터를 컨트롤러에게 전송하고
+- 컨틀로러에서 받아온 데이터를 View 페이지로 출력
+- 3가지 방법 사용 (getParameter() / @RequestParam /Command 객체)
+
+- 컨트롤러 : ProductController
+- 폼 : productForm.jsp
+- 결과 출력 : productResult1.jsp, productResut2.jsp
+
+- jsp 위치 : product 폴더 만들고 그 안에 위치
+- insertProduct1() / insertProduct2() / insertProduct3()
+
+
+------------------------------------------------------------------------------------------
+
+MyBatis(마이바티스)
+- ORM(Object Relation Mapping: 객체 관계 맵핑) 프레임워크
+- 자바에서 JDBC를 이용해서 데이터베이스 연동할 때
+- Java 언어와 sql 언어가 한 파일에 존재하면서 재사용성이 좋지 않음
+- MyBatis는 JDBC의 이런 단점을 개선해서 sql 명령어를 별도의 xml 파일로 분리해서
+- sql 명령어와 자바 객체를 맵핑해준 기능을 제공
+- sql 명령어 재사용 가능
+
+MyBatis 특징 : SQL 명령어를 자바 코드에서 분리해서 XML 파일에서 관리
+
+JDBC를 사용할 경우
+- Controller  -> IService/Service  -> IDAO(선택) / DAO (sql 문장)  -> DB
+
+MyBatis 사용할 경우
+- Controller  -> IService/Service  -> IDAO(필수) / mapper.xml(sql 문장)  (DAO 대신 mapper.xml 사용)
+
+
+
+스프링 MyBatis 사용하기 위한 설정 
+(1) 프로젝트 생성
+(2) pom.xml에서 의존성 설정
+    - 프로젝트 
+    - 데이터베이스 (Spring JDBC 의존성 / Connection Pool 의존성 / Oracle JDBC Driver 의존성)
+    - MyBatis 
+(3) web.xml 인코딩 필터 추가
+(4) 프로퍼티 파일 작성 : jdbc.properties
+(5) 스프링 설정 파일 생성 : application-config.xml
+     - DataSource / Mapper 지정
+(6) web.xml : 스프링 설정 파일 지정
+(7) 클래스 구성 (CRUD)
+    Controller
+    IService / Service
+    VO
+   IDAO / mapper.xml
+  뷰 페이지 (jsp) : select / insert / update / delete / index
+
+		
+
+데이터베이스 작업
+- 관리자 : 사용자 생성 : SRPING
+- 새접속 : SPRING실습
+- 사용자 : SPRING
+- 비밀번호 : 1234
+- 테이블 생성 : product
+
+
+------------------------------------------------------------------------------------------------------------
+1. 프로젝트 생성
+
+New / Spring MVC Project
+프로젝트 이름 : spring_mvc_mybatis
+패키지 이름 : com.spring_mvc.mybatis
+
+(1) pom.xml 버전 변경
+기본 환경 확인
+- Spring Framework 3.1.1
+- Java version 1.6
+- Maven compiler
+-- source 1.6
+-- target 1.6
+
+변경할 버전
+-Spring Framework 4.3.4
+- Java version 1.8
+- Maven compiler
+-- source 1.8
+-- target 1.8
+
+(2) 프로젝트 설정 변경 (프로젝트 이름 우클릭)
+- Java Compiler : 1.8
+- Java Build Path : JRE 수정
+- Project Facets : Java 버전 변경 (1.8) / 톰캣 체크
+
+(3) Maven / Update Project (데이터베이스와 마이바티스 설정 끝난 후에)
+
+------------------------------------------------------------------------------------------------------------------
+ 데이터베이스 (Spring JDBC 의존성 / Connection Pool 의존성 / Oracle JDBC Driver 의존성)
+ojdbc-6.jar
+
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 에 들어 있는 ojdbc6.jar 파일을 아래 폴더에 복사하고
+C:\Users\student\.m2\repository\com\oracle\ojdbc\6 폴더에 저장 (폴더 없으면 새로 생성)
+파일명을 ojdbc-6.jar 파일로 변경
+
+---------------------------------------------------------------------------------------------------------------------
+MyBatis 의존성 설정
+
+<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+-------------------------------------------------------------------------------------------------------------------------
+
+(3) web.xml 인코딩 필터 추가  (한글 깨짐 방지)
+
+------------------------------------------------------------------------------------------------------------------------
+
+(4) 프로퍼티 파일 작성 : jdbc.properties
+위치 : src/main/resources에 database 폴더 만들고 jdbc.properties 파일 생성
+
+데이터베이스 연결 정보 설정
+- 프로퍼티 파일에 작성 해 놓음
+- 이 파일 안 만들고 설정 파일 안에 직접 넣어도 됨
+- 프로퍼티 파일을 만들어서 사용하는 이유 : 보안 때문
+-- DB 연결 정보는 내용이 변경될 수 있으므로 외부 .properties 파일로 작성해서 별도로 관리
+-- git 저장소에 DB 접속 정보가 노출되지 않도록 하기 위함
+
+------------------------------------------------------------------------------------------------------------------
+(5) 스프링 설정 파일 생성 : application-config.xml
+     - DataSource / Mapper 지정
+
+위치 : src/main/resources에 spring 폴더 만들고 application-config.xml 파일 생성
+
+----------------------------------------------------------------------------------------------
+(6) web.xml : 스프링 설정 파일 지정
+
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/spring/application-config.xml</param-value>
+	</context-param>
+
+
+
+
+
+
+
+
+
+
 
 
 
