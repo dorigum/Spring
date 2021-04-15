@@ -836,7 +836,7 @@ MyBatis 사용할 경우
 - 테이블 생성 : product
 
 
------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 1. 프로젝트 생성
 
 New / Spring MVC Project
@@ -918,7 +918,56 @@ MyBatis 의존성 설정
 	</context-param>
 
 
+================================================================
 
+(7) 클래스 구성 (CRUD)
+    Controller
+    IService / Service
+    VO
+   IDAO / mapper.xml
+  뷰 페이지 (jsp) : select / insert / update / delete / index
+
+------------------------------------------------------------------------------------------------------------
+
+패키지 생성
+controller : ProductController 클래스    @Controller / @Autowired
+dao : IProductDAO (인터페이스)
+       ProductMapper.xml
+model : ProductVO 클래스
+service : IProductService 인터페이스     @Service
+           ProductService 클래스
+          
+
+--------------------------------------------------------------------------------
+ProductMapper.xml
+https://mybatis.org/mybatis-3/getting-started.html 에서 복사
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+----------------------------------------------------------------------------------
+사용자 요청 (전체 상품 조회)   ->  Controller    ->  Service      ->    IDAO/Mapper.xml
+		 	<-	      <-		<-					
+
+
+상품 등록  -> 상품 등록 폼 이동 (입력) ->  저장
+
+-----------------------------------------------------------------------------------------------------
+연습문제
+- 새프로젝트 생성 
+- 도서 관리 프로그램 작성
+- 테이블 : 새로 작성 또는 기존 테이블 사용
+
+프로젝트 : spring_mvc_mybatic_book
+패키지명 : com.spring_mybatis.book
+도서 관리 프로그램 작성
+- 전체 도서 정보 조회
+- 도서 상세 정보 조회
+- 도서 정보 등록
+- 도서 정보 수정
+- 도서 정보 삭제
 
 
 
