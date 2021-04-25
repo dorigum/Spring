@@ -16,6 +16,7 @@
 			
 			<!--  로그인 폼  -->
 			<section>
+				<div id=loginFormBox>
 		        <h1 id="title">로그인</h1>
 		        <form method="post" id="loginForm" action="<c:url value="/login"/>">
 		          <table>
@@ -28,7 +29,8 @@
 		                </td>
 		            </tr>             
 		            </table>
-		        </form>	
+		        </form>
+		        </div>
 	        </section>
 	        
 	        <!-- 로그인 실패 시 에러 메시지 출력 -->

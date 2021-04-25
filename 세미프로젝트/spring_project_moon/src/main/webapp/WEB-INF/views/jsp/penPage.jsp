@@ -14,15 +14,15 @@
 
            <section>
                 <article  id="content2"> <!-- 펜 상품 -->   
-            		<div id="productBox">
+            		<div id="productDetailBox">
             			<h3>[ 펜 ]</h3>
-            			<div class='product'>
+            			<div class='productDetail'>
             				<div><a href="#"><img src="<c:url value='/image/pen01.jpg'/>"></a><br>에프엑스 제타 SET<br>￦5,000</div>
             				<div><a href="#"><img src="<c:url value='/image/pen02.jpg'/>"></a><br>플립3<br>￦3,000</div>
             				<div><a href="#"><img src="<c:url value='/image/pen03.jpg'/>"></a><br>에프엑스 제타 파스텔 펄<br>￦8,000</div>
             				<div><a href="#"><img src="<c:url value='/image/pen04.jpg'/>"></a><br>153 클립(CLIP)<br>￦500</div>
             			</div>
-            			<div class='product'>
+            			<div class='productDetail'>
             				<div><a href="#"><img src="<c:url value='/image/pen05.jpg'/>"></a><br>에프엑스 일오삼 탑골셋-트(4SET)<br>￦6,000</div>
             				<div><a href="#"><img src="<c:url value='/image/pen06.jpg'/>"></a><br>트리피스(Triffis)<br>￦300</div>
             				<div><a href="#"><img src="<c:url value='/image/pen07.jpg'/>"></a><br>153 오리지널<br>￦4,800</div>

@@ -23,6 +23,12 @@ ul{
 	text-decoration:none;	
 }
 
+#topMenuBox a:hover {
+	display:inline-block;
+	color:#ffb5b5;
+	text-decoration:none;
+}
+
 
 /********** MAIN MENU **********/
 

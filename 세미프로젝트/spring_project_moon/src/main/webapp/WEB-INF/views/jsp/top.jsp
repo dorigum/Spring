@@ -23,8 +23,7 @@
 	</head>
 	<body>
         	<header>
-        		<div id="headerBox">
-        			<div id="topMenuBox">
+        	<div id="topMenuBox">
 		            	<c:if test="${empty sessionScope.sid }">
 		            		<a href="<c:url value='/loginForm'/>">로그인&nbsp</a>
 		            		<a href="<c:url value='/joinForm'/>">회원가입</a>
@@ -37,9 +36,14 @@
 		            	<a href="<c:url value='/member/myPage'/>">MYPage</a>
 		            	</c:if>
 		            	</div>
-	            	
-	            	<div id="logoBox"><a href="<c:url value='/'/>">
+		            	
+        		<div id="headerBox">
+        		<div id="logoBox"><a href="<c:url value='/'/>">
 	            	<img src="<c:url value='image/logo.png'/>" id="logoImg"></a></div>
+	            	
+	            	
+        			
+
 	            	
             	</div>
             </header>
@@ -58,52 +62,52 @@
                 <div id="subMenuBox">
                  	<div  class="subMenuItem"  id="subMenuItem1">
                     	<ul>   
-                                <li><a href="#">subMenuItem1-1</a></li>                
-                                <li><a href="#">subMenuItem1-2</a></li>
-                                <li><a href="#">subMenuItem1-3</a></li>
-                                <li><a href="#">subMenuItem1-4</a></li>
+                                <li><a href="#"><b>펜</b></a></li>                
+                                <li><a href="#">볼펜</a></li>
+                                <li><a href="#">수성펜</a></li>
+                                <li><a href="#">형광펜</a></li>
                     	</ul>   
                     </div>
                     <div  class="subMenuItem"  id="subMenuItem2">
                     	<ul>   
-                                <li><a href="#">subMenuItem2-1</a></li>                
-                                <li><a href="#">subMenuItem2-2</a></li>
-                                <li><a href="#">subMenuItem2-3</a></li>
-                                <li><a href="#">subMenuItem2-4</a></li>
+                                <li><a href="#"><b>메모지</b></a></li>                
+                                <li><a href="#">점착메모지</a></li>
+                                <li><a href="#">떡메모지</a></li>
+                                <li><a href="#">수첩</a></li>
                     	</ul>      
                     </div>
                     <div  class="subMenuItem"  id="subMenuItem3">
                     	<ul>   
-                                <li><a href="#">subMenuItem3-1</a></li>                
-                                <li><a href="#">subMenuItem3-2</a></li>
-                                <li><a href="#">subMenuItem3-3</a></li>
-                                <li><a href="#">subMenuItem3-4</a></li>
+                                <li><a href="#"><b>스티커</b></a></li>                
+                                <li><a href="#">데코스티커</a></li>
+                                <li><a href="#">인스</a></li>
+                                <li><a href="#">도무송</a></li>
                     	</ul>
                     </div>
                     <div  class="subMenuItem"  id="subMenuItem4">
                     	<ul>   
-                                <li><a href="#">subMenuItem4-1</a></li>                
-                                <li><a href="#">subMenuItem4-2</a></li>
-                                <li><a href="#">subMenuItem4-3</a></li>
-                                <li><a href="#">subMenuItem4-4</a></li>
+                                <li><a href="#">노트</a></li>                
+                                <li><a href="#">베이직노트</a></li>
+                                <li><a href="#">스프링노트</a></li>
+                                <li><a href="#">미니노트</a></li>
                     	</ul>   
                     </div> 
                     <div  class="subMenuItem"  id="subMenuItem5">
                     	<ul>   
-                                <li><a href="#">subMenuItem5-1</a></li>                
-                                <li><a href="#">subMenuItem5-2</a></li>
-                                <li><a href="#">subMenuItem5-3</a></li>
-                                <li><a href="#">subMenuItem5-4</a></li>
+                                <li><a href="#"><b>디자인문구</b></a></li>                
+                                <li><a href="#">랩핑지</a></li>
+                                <li><a href="#">엽서</a></li>
+                                <li><a href="#">마스킹테이프</a></li>
                     	</ul>
                     </div>
-                    <div  class="subMenuItem"  id="subMenuItem6">
+<!--                     <div  class="subMenuItem"  id="subMenuItem6">
                     	<ul>   
                                 <li><a href="#">subMenuItem6-1</a></li>                
                                 <li><a href="#">subMenuItem6-2</a></li>
                                 <li><a href="#">subMenuItem6-3</a></li>
                                 <li><a href="#">subMenuItem6-4</a></li>
                     	</ul>   
-                    </div>                
+                    </div>    -->             
                 
                 </div>                
             </nav>
