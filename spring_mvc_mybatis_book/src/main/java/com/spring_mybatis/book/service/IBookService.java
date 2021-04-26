@@ -8,6 +8,6 @@ public interface IBookService {
 	ArrayList<BookVO> bookList();
 	void insertBook(BookVO book);
 	void updateBook(BookVO book);
-	void deleteBook(int bookNo);
-	BookVO bookDetailView(int bookNo);
+	void deleteBook(String bookNo);
+	BookVO bookDetailView(String bookNo);
 }

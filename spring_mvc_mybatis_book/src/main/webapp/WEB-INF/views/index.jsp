@@ -9,6 +9,6 @@
 	<body>
 		<h3>도서 페이지</h3>
 		<a href="book/bookListView">전체 도서 조회</a><br><br>
-		<a herf="book/bookNewForm">도서 등록</a>
+		<a href="book/bookNewForm">도서 등록</a>
 	</body>
 </html>

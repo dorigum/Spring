@@ -3,18 +3,18 @@ package com.spring_mybatis.book.model;
 import java.sql.Date;
 
 public class BookVO {
-	private int bookNo;
+	private String bookNo;
 	private String bookName;
 	private String bookAuthor;
 	private int bookPrice;
-	private Date bookDate;
+	private String bookDate;
 	private int bookStock;
-	private int pubNo;
+	private String pubNo;
 	
-	public int getBookNo() {
+	public String getBookNo() {
 		return bookNo;
 	}
-	public void setBookNo(int bookNo) {
+	public void setBookNo(String bookNo) {
 		this.bookNo = bookNo;
 	}
 	public String getBookName() {
@@ -35,10 +35,10 @@ public class BookVO {
 	public void setBookPrice(int bookPrice) {
 		this.bookPrice = bookPrice;
 	}
-	public Date getBookDate() {
-		return bookDate;
+	public String getBookDate() {
+		return bookDate.substring(0, 10);
 	}
-	public void setBookDate(Date bookDate) {
+	public void setBookDate(String bookDate) {
 		this.bookDate = bookDate;
 	}
 	public int getBookStock() {
@@ -47,10 +47,10 @@ public class BookVO {
 	public void setBookStock(int bookStock) {
 		this.bookStock = bookStock;
 	}
-	public int getPubNo() {
+	public String getPubNo() {
 		return pubNo;
 	}
-	public void setPubNo(int pubNo) {
+	public void setPubNo(String pubNo) {
 		this.pubNo = pubNo;
 	}
 	

@@ -27,7 +27,7 @@
   	
   	<!-- 도서 상세 정보 조회 -->
   	<select id="bookDetailView" resultMap="bookResult">
-  		SELETE * FROM book WHERE bookNo = #{bookNo}
+  		SELECT * FROM book WHERE bookNo=#{bookNo}
   	</select>
   	
   	<!-- 도서 정보 수정 -->
@@ -39,7 +39,7 @@
   	</update>
   	
   	<!-- 도서 정보 삭제 -->
-  	<delete id="deleteBook" parameterType="string">
+  	<delete id="deleteBook" parameterType="String">
   		DELETE FROM book WHERE bookNo=#{bookNo}
   	</delete>
  </mapper>

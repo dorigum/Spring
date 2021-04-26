@@ -7,7 +7,7 @@
 		<title>도서 정보 수정 화면</title>
 	</head>
 	<body>
-		<form method="post" action="/mybatis/book/update">
+		<form method="post" action="/book/book/update">
 			<table>
 				<tr><td>도서번호</td><td><input type="text" name="bookNo" value="${book.bookNo }" readonly></td></tr>
 				<tr><td>도서명</td><td><input type="text" name="bookName" value="${book.bookName }"></td></tr>

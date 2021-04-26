@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<h3>도서 등록</h3>
-		<form method="post" action="/mybatis/book/book/insert">
+		<form method="post" action="/book/book/insert">
 			<table>
 				<tr><td>도서번호</td><td><input type="text" name="bookNo"></td></tr>
 				<tr><td>도서명</td><td><input type="text" name="bookName"></td></tr>

@@ -33,15 +33,14 @@ public class BookService implements IBookService {
 	}
 
 	@Override
-	public void deleteBook(int bookNo) {
-		// TODO Auto-generated method stub
+	public void deleteBook(String bookNo) {
+		dao.deleteBook(bookNo);
 
 	}
 
 	@Override
-	public BookVO bookDetailView(int bookNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public BookVO bookDetailView(String bookNo) {
+		return dao.bookDetailView(bookNo);
 	}
 
 }
