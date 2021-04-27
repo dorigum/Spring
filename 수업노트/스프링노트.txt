@@ -1579,28 +1579,126 @@ Github 사용법
 연습문제
 - 프로젝트 수정 작업 : HelloController.java 또는 다른 파일 내용 수정하고 Github에 반영 (서버에 변경 사항 반영)
 
+------------------------------------------------------------------------------
+Fork / Pull Requests / Merge
+
+Fork : 다른 사람의 Github 저장소를 복사하여 내 저장소에 붙여넣기 하는 기능
+Pull Requests : Fork로 가져온 코드 수정 후 게시하고 가져가라고 요청하는 것 (메일 전송)
+Merge : 변경된 통합 (반영) (confirm : 확인했다고 메일 전송)
+branch (가지 ) : Root 프로젝트로 부터 파생된 프로젝트
+	- 코드 전체를 복사해서 독립적으로 개발하는 것 (자신 만의 버전)
+	- 독립된 working directory
+
+
+팀 프로젝트 저장소 생성
+- 팀장 선출
+- 팀원 : branch로 Fork 해서 작업 수행
+	-- 수정된 내용 올리고 Pull Requests해서 팀장에게 가져가라고 메일 전송
+- 팀장 : 메일 확인하고 Merge 작업 수행 / confrim 메일 전송
+
+---------------------------------------------------------------------
+(1) Fork : 다른 사람의 Github 저장소를 복사하여 내 저장소에 붙여넣기 하는 기능
+(2) Pull Requests : Fork로 가져온 코드 수정 후 게시하고 가져가라고 요청하는 것 (메일 전송)
+--- 팀장 메일 확인 했음
+(3) Merge : 변경된 통합 (반영) (confirm : 확인했다고 메일 전송)
+ 
+
+
+================================================================
+
+파일 업로드
+- MultipartFile 클래스 사용
+- 스프링 부트에서는 의존성 설정 필요 없업
+- application.properties 파일에서 파일 최대 크기만 설정
+
+파일명이 중복되지 않고 파일 업로드
+- UUID (Univerally Unique Identifier)
+-- 소프트웨어 구축에 쓰이는 식별자 표준
+-- 128비트의 숫자
+-- 32개의 16진수로 표현, 총 36개 문자(32개문자 4개의 하이픈)로 8-4-4-4-12라는 5개의 그룹을 하이픈으로 구분
+-- 자바 UUID 클래스의 randomUUID() 메소드를 사용해서 유일한 식별자 생성 - 파일 이름으로 사용
+--- 새로 생성된 파일명 + 원본파일명
+
+스프링 부트 프로젝트에서 파일 업로드/다운로드
+- 파일 업로드/다운로드 폼 생성 
+-- views / upload / fileUploadForm.jsp, fileDownloadForm.jsp
+- 파일 업로드 결과 출력 페이지 생성 : fileUploadResult.jsp
+- 패키지 생성 : com.multi.file
+- 컨트롤러 생성 : FileUploadController / FileDownloadController
+- 업로드된 파일 저장 위치 : 외부 폴더 생성 ("C:/upload" 폴더에 저장)
+
+
+---------------------------------------------------------------------------------
+파일 업로드
+(1) 파일 업로드/다운로드 폼 생성 
+- views / upload / fileUploadForm.jsp
+(2) index에 링크 추가
+(3) 패키지 생성 : com.multi.file
+(4) FileUploadController 생성
+    - BootMybatisApplication 클래스에 
+    - @ComponentScan(basePackageClasses=FileUploadController.class) 등록
+(5) 실행 : 업로드 파일 확인
+(6) FileUploadController에 파일 업로드 처리 작업 추가
+(7) fileUploadResult.jsp 파일 생성
+(8) 실행 : 파일 업로드 결과 확인 ("c:/upload" 폴더 확인)
+
+파일 다운로드
+- 전체 파일 목록 출력
+- 파일 목록에서 다운로드할 파일 선택하면
+- 다운로드 폴더로 파일 다운로드 됨
+
+(1) FileDownloadController 생성
+(2) @ComponentScan(basePackageClasses=FileDownloadController.class) 등록
+(3) fileDownloadForm.jsp 생성
+(4) index.jsp에 경로 추가
+(5) 실행해서 파일 다운로드 폼 확인
+(6) FileDownloadController에 파일 다운로드 처리 작업 추가
+(7) 실행 : 파일 다운로드 되는지 확인 (다운로드 폴더에 다운로드 됨)
+
+---------------------------------------------------------------------------------
+여러 개의 파일 업로드
+
+- form : <input> 태그에서 multiple="multiple"로 설정
+- upload 컨트롤러에서 ArrayList로 받음 :  ArrayList<MultipartFile> files
+- for문 사용해서 파일 이름 변경, 파일 생성, 파일 서버로 전송
+
+---------------------------------------------------------------------------------
+파일이름 변경하지 않고 원본파일명으로 파일 업로드
+- 저장할 폴더 : c:/upload/image
+- upload 폼에 추가 
+- upload 컨트롤러에 추가
+- fileImageUploadResult.jsp 추가해서 c:/upload/image 폴더 확인하라고 출력
 
 
 
 
+------------------------------------------------------------------
+4/28 ~ 5/6 (6일)
+   - 파이썬 기초 문법
+   - 데이터 전처리
+   - AI Makers Kit
+5/7 ~ 5/18 (6일 + 멘토링)
+   - Naver AI Platform
+5/20 ~ 5/25 (4일)
+   - Naver Cloud Service 배포
+5/26 ~5/17 (14일 + 멘토링 + 강사)
+   - 팀 프로젝트 진행 
+   - 5/17 경진대회
+
+------------------------------------------------------------------
 
 
+스프링 부트 프로젝트에서 네이버 API 이용하여 도서 검색
 
+- Spring Boot Project 생성 : Srping Web만 체크
+-- bootAPI
+- JSP의존성 설정
+- 포트 번호 지정
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- 네이버 개발자 센터에서 Open API 사용법 확인하고
+- 도서 검색 프로그램 작성
+- BookVO
+- APIController
+- BookService
+- index.jsp
+- bookListView.jsp
