@@ -60,6 +60,15 @@
         <artifactId>jstl</artifactId>
     </dependency>
     
+    <!-- spring boot auto restart(설정, 클래스가 바뀌면 auto restart) -->
+        <!-- 스프링레거시프로젝트에서는 자바코드가 바뀌면 자동으로 서버가 다시시작되는데 부트에서는
+        그런것이 없기 때문에 서버가 재시작할 수 있도록 설정을 해주어야 한다. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+    
 	</dependencies>
 
 	<build>
